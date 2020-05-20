@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from'./App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -65,7 +65,7 @@ class App extends Component {
             })}
           </div>
         );
-        btnClass = classes.Red;
+      btnClass = classes.Red;
     }
 
     const assignedClasses = [];
@@ -82,7 +82,7 @@ class App extends Component {
         <h1>React App</h1>
         <p className={assignedClasses.join(' ')}>This is actually working!</p>
         <button
-        className={btnClass}
+          className={btnClass}
           onClick={this.togglePersonsRender}>Toggle Persons</button>
         {persons}
       </div>
