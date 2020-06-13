@@ -4,6 +4,13 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
+
+  constructor(props){
+    console.log('Constructor!');
+    super(props);
+  }
+
+
   /*
   State = estado da aplicação, objetos que podem ser alterados
   dinamicamente com o setState
@@ -49,7 +56,12 @@ class App extends Component {
       persons: persons
     });
   }
+
+  componentDidMount(){
+    console.log("Component did mount é chamado após a renderização do componente.");
+  }
   render() {
+    console.log('Render!');
     let persons = null;
 
     if (this.state.showPersons) {
@@ -66,7 +78,9 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-        <Cockpit showPersons={this.state.showPersons}
+        <Cockpit
+          title={this.props.title}
+          showPersons={this.state.showPersons}
           persons={this.state.persons}
           clicked={this.togglePersonsRender} />
         {persons}
