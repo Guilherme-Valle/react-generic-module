@@ -60,6 +60,15 @@ class App extends Component {
   componentDidMount(){
     console.log("Component did mount é chamado após a renderização do componente.");
   }
+
+  shouldComponentUpdate(nextProps, nextState){
+    console.log('[App] shouldComponentUpdate');
+    return true;
+  };
+
+  componentDidUpdate(){
+    console.log('[App] componentDidUpdate');
+  };
   render() {
     console.log('Render!');
     let persons = null;
@@ -73,9 +82,6 @@ class App extends Component {
           />
         );
     }
-
-
-
     return (
       <div className={classes.App}>
         <Cockpit
