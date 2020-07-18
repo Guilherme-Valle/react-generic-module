@@ -9,7 +9,11 @@ class Persons extends Component {
 
     shouldComponentUpdate(nextProps, nextState) {
         console.log('[Persons] shouldComponentUpdate');
-        return true;
+        if (nextProps.persons !== this.props.persons) {
+            return true;
+        } else {
+            return false;
+        }
     };
 
     getSnapshotBeforeUpdate(prevProps, prevUpdate) {
@@ -22,7 +26,12 @@ class Persons extends Component {
         console.log('[Persons] componenetDidUpdate');
     };
 
+    componentWillUnmount() {
+        console.log('[Persons] componentWillUnmount');
+    }
+
     render() {
+        console.log('[Persons] Rendering...')
         return this.props.persons.map((person, index) => {
             return <Person name={person.name}
                 age={person.age}

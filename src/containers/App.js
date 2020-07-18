@@ -5,7 +5,7 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     console.log('Constructor!');
     super(props);
   }
@@ -21,7 +21,8 @@ class App extends Component {
       { id: 2, name: "Manu", age: 30 },
       { id: 3, name: "Carlita", age: 12 }
     ],
-    showPersons: false
+    showPersons: false,
+    showCockpit: true
   };
 
   nameChangedHandler = (event, id) => {
@@ -57,18 +58,19 @@ class App extends Component {
     });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     console.log("Component did mount é chamado após a renderização do componente.");
   }
 
-  shouldComponentUpdate(nextProps, nextState){
+  shouldComponentUpdate(nextProps, nextState) {
     console.log('[App] shouldComponentUpdate');
     return true;
   };
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     console.log('[App] componentDidUpdate');
   };
+
   render() {
     console.log('Render!');
     let persons = null;
@@ -84,11 +86,13 @@ class App extends Component {
     }
     return (
       <div className={classes.App}>
-        <Cockpit
-          title={this.props.title}
-          showPersons={this.state.showPersons}
-          persons={this.state.persons}
-          clicked={this.togglePersonsRender} />
+        <button onClick={() => this.setState({ showCockpit: false })}> Cockpit button </button>
+        {
+          this.state.showCockpit ? <Cockpit
+            title={this.props.title}
+            showPersons={this.state.showPersons}
+            personsLength={this.state.persons.length}
+            clicked={this.togglePersonsRender} /> : null}
         {persons}
       </div>
     );
