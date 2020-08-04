@@ -9,11 +9,11 @@ class Persons extends Component {
 
     shouldComponentUpdate(nextProps, nextState) {
         console.log('[Persons] shouldComponentUpdate');
-        if (nextProps.persons !== this.props.persons) {
-            return true;
-        } else {
-            return false;
-        }
+        //  if (nextProps.persons !== this.props.persons) {
+        return true;
+        //  } else {
+        //      return false;
+        //  }
     };
 
     getSnapshotBeforeUpdate(prevProps, prevUpdate) {
@@ -37,7 +37,8 @@ class Persons extends Component {
                 age={person.age}
                 key={person.id}
                 click={() => this.props.clicked(index)}
-                changed={(event) => this.props.changed(event, person.id)} />
+                changed={(event) => this.props.changed(event, person.id)}
+            />
         });
     }
 }
